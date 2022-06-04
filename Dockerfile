@@ -8,6 +8,7 @@ ENV VERSION=1.0
 ENV GIT_HOST="github.com"
 ENV REPO="git@github.com:lrbaden/memoir.git"
 ENV REPO_DIR="/memoir"
+ENV REPO_SYNC_MODE="pull"
 
 # Install dependencies
 RUN apk add --no-cache \
