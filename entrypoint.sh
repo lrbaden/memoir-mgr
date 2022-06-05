@@ -39,11 +39,11 @@ if [ -d "$REPO_SYNC_DIR" ]; then
     
     if [ "pull" == "$REPO_SYNC_MODE" ]; then
         # Sync from repo to mount point
-        mgr-watch "$REPO_DIR" "$REPO_SYNC_DIR"
+        mgr-watch "$REPO_DIR" "$REPO_SYNC_DIR" &
 
     elif [ "push" == "$REPO_SYNC_MODE" ]; then
         # Sync from mount point to repo
-        mgr-watch "$REPO_SYNC_DIR" "$REPO_DIR"
+        mgr-watch "$REPO_SYNC_DIR" "$REPO_DIR" &
     fi
 fi
 
