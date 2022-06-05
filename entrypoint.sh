@@ -2,6 +2,7 @@
 
 # Set variables
 IDENTITY_FILE=${IDENTITY_FILE:-""}
+REPO_SYNC_DIR=${REPO_SYNC_DIR:-"/mnt/$REPO_DIR"}
 
 
 echo -e "\nWelcome to Memoir Manager v$VERSION ..."
@@ -32,6 +33,19 @@ if [ -z "$(ls $REPO_DIR)" ]; then
     ssh-add -l 1> /dev/null && git clone "$REPO" "$REPO_DIR"
 fi
 
+
+#  Case: User provided a mount point for sync. 
+if [ -d "$REPO_SYNC_DIR" ]; then
+    
+    if [ "pull" == "$REPO_SYNC_MODE" ]; then
+        # Sync from repo to mount point
+        watch "$REPO_DIR" "$REPO_SYNC_DIR"
+
+    elif [ "push" == "$REPO_SYNC_MODE" ]; then
+        # Sync from mount point to repo
+        watch "$REPO_SYNC_DIR" "$REPO_DIR"
+    fi
+fi
 
 # execute command
 exec "$@"
