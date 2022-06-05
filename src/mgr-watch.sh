@@ -32,8 +32,6 @@ inotifywait -q -m -r -e modify,delete,create $1 | while read DIRECTORY EVENT FIL
             file_removed "$DIRECTORY" "$FILE"
             ;;
     esac
-    # handle extra arguments
-    shift 2
     # sync files
     rsync -aqz $ORIGIN $DESTINATION $@
 done
