@@ -33,5 +33,5 @@ inotifywait -q -m -r -e modify,delete,create $1 | while read DIRECTORY EVENT FIL
             ;;
     esac
     # sync files
-    rsync -aqz $ORIGIN $DESTINATION $@
+    rsync -aqz $ORIGIN $DESTINATION
 done
