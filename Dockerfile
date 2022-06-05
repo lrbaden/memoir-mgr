@@ -32,7 +32,7 @@ COPY "src/" "/usr/src/"
 
 
 # Create symlink
-RUN for f in $(ls "/usr/src/*.sh"); do \
+RUN for f in $(ls /usr/src/*.sh); do \
         fname="${f##*/}"; name="${fname%.sh}"; link="/usr/local/bin/$name"; \
         ln -s  "$f" "$link"; done
 
