@@ -30,6 +30,8 @@ RUN \
 # Copy source
 COPY "src/" "/usr/src/"
 
+RUN chmod -R +x "/usr/src/"
+
 
 # Create symlink
 RUN for f in $(ls /usr/src/*.sh); do \
