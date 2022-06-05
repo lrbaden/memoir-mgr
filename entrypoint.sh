@@ -2,7 +2,7 @@
 
 # Set variables
 IDENTITY_FILE=${IDENTITY_FILE:-""}
-REPO_SYNC_DIR=${REPO_SYNC_DIR:-"/mnt/$REPO_DIR"}
+REPO_SYNC_DIR=${REPO_SYNC_DIR:-"/mnt$REPO_DIR"}
 
 
 echo -e "\nWelcome to Memoir Manager v$VERSION ..."
