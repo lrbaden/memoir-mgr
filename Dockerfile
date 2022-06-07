@@ -3,6 +3,7 @@
 FROM alpine:latest 
 
 ARG HOME=/root
+ARG SCRIPTS=/usr/src/scripts
 
 ENV VERSION=1.0
 ENV GIT_HOST="github.com"
@@ -28,13 +29,13 @@ RUN \
 
 
 # Copy source
-COPY "src/" "/usr/src/"
+COPY --chown=root "scripts/" "$SCRIPTS"
 
-RUN chmod -R +x "/usr/src/"
+RUN chmod -R +x "$SCRIPTS" 
 
 
 # Create symlink
-RUN for f in $(ls /usr/src/*.sh); do \
+RUN for f in $(ls $SCRIPTS/*.sh); do \
         fname="${f##*/}"; name="${fname%.sh}"; link="/usr/local/bin/$name"; \
         ln -s  "$f" "$link"; done
 
