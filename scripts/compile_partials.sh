@@ -17,7 +17,7 @@ function update_src() {
 
     # check source file
     if [ ! -f "$1" ]; then 
-        echo "$(basename $1) not found." 
+        echo "$1 not found." 
         exit 1
     fi
 
