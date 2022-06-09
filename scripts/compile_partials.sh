@@ -29,7 +29,7 @@ function update_src() {
 
     # compare source vs partials
     old=$(< "$1")
-    new=$(cat $(find $2 -type f))
+    new=$(cat $(ls ${2}/*.md))
 
     # update source file
     if [ "$old" != "$new" ]; then 
